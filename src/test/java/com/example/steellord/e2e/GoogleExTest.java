@@ -1,4 +1,4 @@
-package com.example.steellord.tests;
+package com.example.steellord.e2e;
 
 import com.example.steellord.BasePage;
 import org.junit.jupiter.api.Test;
