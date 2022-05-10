@@ -14,7 +14,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java-compiler.version>18</java-compiler.version>
         <maven-surefire-plugin.version>3.0.0-M6</maven-surefire-plugin.version>
-        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+        <maven-compiler-plugin.version>3.10.1</maven-compiler-plugin.version>
 
         <selenium.version>4.1.4</selenium.version>
         <selenium-server.version>4.0.0-alpha-2</selenium-server.version>
@@ -74,6 +74,32 @@
                     <target>${java-compiler.version}</target>
                 </configuration>
             </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.21.0</version>
+                <configuration>
+                    <includes>
+                        <include>**/*ExTest.java</include>
+                    </includes>
+                    <testSourceDirectory>${basedir}\src\test\java\</testSourceDirectory>
+                    <testFailureIgnore>true</testFailureIgnore>
+                </configuration>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.junit.platform</groupId>
+                        <artifactId>junit-platform-surefire-provider</artifactId>
+                        <version>1.2.0-M1</version>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.junit.jupiter</groupId>
+                        <artifactId>junit-jupiter-engine</artifactId>
+                        <version>5.2.0-M1</version>
+                    </dependency>
+                </dependencies>
+            </plugin>
+
         </plugins>
     </build>
 </project>

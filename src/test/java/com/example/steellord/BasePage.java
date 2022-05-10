@@ -6,6 +6,9 @@ import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.WebDriver;
 
+import java.time.Duration;
+import java.util.concurrent.TimeUnit;
+
 import static com.example.steellord.config.ConfigurationManager.configuration;
 
 public class BasePage {
@@ -20,6 +23,7 @@ public class BasePage {
 
         driver = new DriversFactory().createInstance(configuration().browser());
         driver.get(configuration().url());
+        driver.manage().timeouts().pageLoadTimeout(4,TimeUnit.SECONDS);
     }
 
     @AfterEach
