@@ -21,7 +21,7 @@ import org.openqa.selenium.safari.SafariOptions;
 import static com.example.steellord.config.ConfigurationManager.configuration;
 import static java.lang.Boolean.TRUE;
 
-public enum BrowserFactory {
+public enum BrowsersFactory {
 
     CHROME {
         @Override

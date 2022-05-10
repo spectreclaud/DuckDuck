@@ -3,7 +3,6 @@ package com.example.steellord.driver;
 import com.example.steellord.exceptions.TargetNotValidException;
 import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.remote.AbstractDriverOptions;
 import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.net.URL;
@@ -12,7 +11,7 @@ import java.util.logging.Logger;
 
 import static com.example.steellord.config.ConfigurationManager.configuration;
 
-public class DriverFactory {
+public class DriversFactory {
 
     private static final Logger logger = Logger.getLogger("com.example.steellord");
 
@@ -22,10 +21,10 @@ public class DriverFactory {
 
         switch (target) {
             case LOCAL:
-                webDriver = BrowserFactory.valueOf(browser.toUpperCase()).createDriver();
+                webDriver = BrowsersFactory.valueOf(browser.toUpperCase()).createDriver();
                 break;
             case REMOTE:
-                webDriver = createRemoteInstance(BrowserFactory.valueOf(browser.toUpperCase()).getOptions());
+                webDriver = createRemoteInstance(BrowsersFactory.valueOf(browser.toUpperCase()).getOptions());
                 break;
             default:
                 throw new TargetNotValidException(target.toString());
