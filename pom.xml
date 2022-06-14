@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.example.steellord</groupId>
-    <artifactId>TemplateProject</artifactId>
+    <artifactId>DuckDuck</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <name>TemplateProject</name>
+    <name>DuckDuck</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -81,7 +81,7 @@
                 <version>2.21.0</version>
                 <configuration>
                     <includes>
-                        <include>**/*ExTest.java</include>
+                        <include>**/*ceTests.java</include>
                     </includes>
                     <testSourceDirectory>${basedir}\src\test\java\</testSourceDirectory>
                     <testFailureIgnore>true</testFailureIgnore>
