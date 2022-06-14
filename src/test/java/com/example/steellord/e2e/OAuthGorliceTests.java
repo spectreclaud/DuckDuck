@@ -22,8 +22,10 @@ public class OAuthGorliceTests extends BasePage {
     By errorMessage = By.xpath("//div[3]");
     By passwdField = By.id("password");
     By header = By.xpath("//div[@id='headerDiv']/nav/div[2]/div[2]/b");
+    By loginError = By.xpath("//legend[contains(.,'Log in again')]");
 
     private String email = "druki.rafst@gmail.com";
+    private String defoultEmail = "kuku@gmail.com";
     private String password = "KYubffayamX7?$";
     private String emailCode = "123456";
 
@@ -82,5 +84,33 @@ public class OAuthGorliceTests extends BasePage {
                 .until(ExpectedConditions.visibilityOfElementLocated(header));
 
         assertEquals("druki.rafst", driver.findElement(header), "Login failed");
+    }
+
+    @Test
+    @DisplayName("Bad login with email")
+    public void wrongEmailTest() {
+
+        new WebDriverWait(driver, Duration.ofSeconds(3))
+                .until(ExpectedConditions.visibilityOfElementLocated(signInButton));
+
+        driver.findElement(signInButton).click();
+
+        new WebDriverWait(driver, Duration.ofSeconds(3))
+                .until(ExpectedConditions.visibilityOfElementLocated(form));
+
+        driver.findElement(loginEmailOption).click();
+
+        driver.findElement(userEmail).clear();
+        driver.findElement(userEmail).sendKeys(defoultEmail);
+
+        driver.findElement(passwdField).clear();
+        driver.findElement(passwdField).sendKeys(password);
+
+        driver.findElement(passwdField).submit();
+
+        new WebDriverWait(driver, Duration.ofSeconds(3))
+                .until(ExpectedConditions.visibilityOfElementLocated(header));
+
+        assertEquals("Log in again", driver.findElement(loginError), "User can login to the system from defoult email");
     }
 }
